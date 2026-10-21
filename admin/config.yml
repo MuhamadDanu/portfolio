@@ -13,9 +13,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Foto Banner", name: "image", widget: "image", media_folder: "/assets_banner", public_folder: "assets_banner" }
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Aplikasi / Software", name: "software", widget: "string", default: "Photoshop" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Banner", name: "image", widget: "image", media_folder: "/assets_banner", public_folder: "assets_banner" }
 
   - name: "logo"
     label: "Desain Logo"
@@ -23,9 +23,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Foto Logo", name: "image", widget: "image", media_folder: "/assets_logo", public_folder: "assets_logo" }
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Aplikasi / Software", name: "software", widget: "string", default: "Illustrator" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Logo", name: "image", widget: "image", media_folder: "/assets_logo", public_folder: "assets_logo" }
 
   - name: "vector"
     label: "Vektor Wajah / Wpap"
@@ -33,9 +33,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor", public_folder: "assets_vektor" }
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Aplikasi / Software", name: "software", widget: "string", default: "CorelDraw / Photoshop" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor", public_folder: "assets_vektor" }
 
   - name: "illustration"
     label: "Illustrasi Karakter"
@@ -43,9 +43,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Foto Ilustrasi", name: "image", widget: "image", media_folder: "/assets_illustration", public_folder: "assets_illustration" }
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Aplikasi / Software", name: "software", widget: "string", default: "Illustrator" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Ilustrasi", name: "image", widget: "image", media_folder: "/assets_illustration", public_folder: "assets_illustration" }
 
   - name: "brand"
     label: "Identitas Brand"
@@ -53,9 +53,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Foto Brand/Poster", name: "image", widget: "image", media_folder: "/assets_poster", public_folder: "assets_poster" }
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Aplikasi / Software", name: "software", widget: "string", default: "Photoshop / Illustrator" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Brand/Poster", name: "image", widget: "image", media_folder: "/assets_poster", public_folder: "assets_poster" }
 
   - name: "editing"
     label: "Photo Editing"
@@ -63,6 +63,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Foto Hasil Editing", name: "image", widget: "image", media_folder: "/assets_editing", public_folder: "assets_editing" }
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Aplikasi / Software", name: "software", widget: "string", default: "Photoshop" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Editing", name: "image", widget: "image", media_folder: "/assets_editing", public_folder: "assets_editing" }
