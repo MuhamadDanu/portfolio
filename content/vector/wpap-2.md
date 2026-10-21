@@ -1,5 +1,5 @@
 ---
 title: WPAP
 description: Photoshop / Editing
-image: /assets_vektor/ayu.jpg
+image: /assets_vektor/babeh.jpg
 ---
