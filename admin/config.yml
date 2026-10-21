@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: MuhamadDanu/portfolio # Ganti sesuai USERNAME/NAMA_REPO GitHub kamu
+  branch: main # Branch utama kamu
+
+media_folder: "assets_poster" # Folder tempat nyimpen foto karya
+public_folder: "assets_poster"
+
+collections:
+  - name: "portfolio"
+    label: "Karya Portfolio"
+    folder: "content/portfolio" # Tempat menyimpan data detail karya (format JSON/Markdown)
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "select", options: ["Banner", "Illustration", "Logo", "Apparel"] }
+      - { label: "Deskripsi/Software", name: "description", widget: "string" }
+      - { label: "Foto Karya", name: "image", widget: "image" }
