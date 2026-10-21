@@ -3,17 +3,66 @@ backend:
   site_domain: muhamaddanu.netlify.app
   branch: main
 
-media_folder: "assets_poster"
-public_folder: "assets_poster"
+media_folder: "assets"
+public_folder: "assets"
 
 collections:
-  - name: "portfolio"
-    label: "Karya Portfolio"
-    folder: "content/portfolio"
+  - name: "banner"
+    label: "Banner & Carousel"
+    folder: "content/banner"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Kategori", name: "category", widget: "select", options: ["Banner", "UI/UX", "Graphic Design", "Illustration"] }
-      - { label: "Deskripsi/Software", name: "description", widget: "string" }
-      - { label: "Foto Karya", name: "image", widget: "image" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Banner", name: "image", widget: "image", media_folder: "/assets_banner" }
+
+  - name: "editing"
+    label: "Photo Editing"
+    folder: "content/editing"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Hasil Editing", name: "image", widget: "image", media_folder: "/assets_editing" }
+
+  - name: "illustration"
+    label: "Illustration"
+    folder: "content/illustration"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Ilustrasi", name: "image", widget: "image", media_folder: "/assets_illustration" }
+
+  - name: "logo"
+    label: "Logo Design"
+    folder: "content/logo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Logo", name: "image", widget: "image", media_folder: "/assets_logo" }
+
+  - name: "poster"
+    label: "Poster Design"
+    folder: "content/poster"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Poster", name: "image", widget: "image", media_folder: "/assets_poster" }
+
+  - name: "vector"
+    label: "Vector Design"
+    folder: "content/vector"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor" }
