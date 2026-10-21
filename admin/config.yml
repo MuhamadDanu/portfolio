@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: MuhamadDanu/portfolio
+  name: git-gateway
+  site_domain: muhamaddanu.netlify.app
   branch: main
 
 media_folder: "assets_poster"
