@@ -25,24 +25,24 @@ async function loadPortfolio(category, containerId) {
           // Sesuaikan class kartu dengan struktur CSS kamu
           const cardHtml = `
             <div class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900">
-                <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
+              <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
                 <img
-                    src="${data.image}"
-                    alt="${data.title}"
-                    loading="lazy"
-                    class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  src="${imagePath}"
+                  alt="${data.title || 'Karya'}"
+                  loading="lazy"
+                  class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />
-                </div>
-                <div class="mt-4">
+              </div>
+              <div class="mt-4">
                 <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
-                    ${data.title}
+                  ${data.title || ''}
                 </h3>
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">
-                    ${data.software || ''}
+                  ${toolsText}
                 </p>
-                </div>
+              </div>
             </div>
-            `;
+          `;
           container.innerHTML += cardHtml;
         }
       }
