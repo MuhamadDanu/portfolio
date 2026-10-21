@@ -142,9 +142,30 @@
           </p>
         </div>
 
-        <!-- Grid Karya (Kotak-Kotak Hasil Karya Otomatis dari CMS) -->
-        <div id="vector-container" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-          <!-- Data dari CMS akan di-render otomatis di sini lewat portfolio-loader.js -->
+        <!-- Grid Karya (Kotak-Kotak Hasil Karya) -->
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+          
+          <!-- Karya 1 -->
+          <div
+            class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900"
+          >
+            <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
+              <img
+                src="assets_vektor/SAMBO.jpg"
+                alt="Karya 1"
+                class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div class="mt-4">
+              <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                Sambro
+              </h3>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">
+                Photoshop / Vector
+              </p>
+            </div>
+          </div>
+
         </div>
 
         <!-- Footer Sederhana -->
@@ -154,12 +175,13 @@
       </main>
     </div>
 
-    <!-- Script Fetch Data CMS -->
+    <!-- Cukup panggil ini di bagian bawah HTML -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="portfolio-loader.js"></script>
     <script>
+      // Tinggal sebut nama kategori & ID container-nya
       document.addEventListener('DOMContentLoaded', () => {
-        loadPortfolio('vector', 'vector-container');
+        loadPortfolio('vector', 'vector-container'); // Ganti 'vector' sesuai kategorinya
       });
     </script>
 
