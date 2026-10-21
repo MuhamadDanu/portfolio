@@ -2,8 +2,8 @@ async function loadPortfolio(category, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const repoUser = 'muhamaddanu'; // Username GitHub kamu
-  const repoName = 'portfolio';   // Nama repositori GitHub kamu
+  const repoUser = 'muhamaddanu';
+  const repoName = 'portfolio';
 
   try {
     const res = await fetch(`https://api.github.com/repos/${repoUser}/${repoName}/contents/content/${category}`);
@@ -11,18 +11,24 @@ async function loadPortfolio(category, containerId) {
 
     if (!Array.isArray(files)) return;
 
-    container.innerHTML = ''; // Bersihkan kontainer statis
+    container.innerHTML = ''; 
 
     for (const file of files) {
       if (file.name.endsWith('.md')) {
-        const rawRes = await fetch(file.download_url);
+        const rawUrl = `https://raw.githubusercontent.com/${repoUser}/${repoName}/main/content/${category}/${file.name}`;
+        const rawRes = await fetch(rawUrl);
         const rawText = await rawRes.text();
 
         const parts = rawText.split('---');
         if (parts.length >= 3) {
           const data = jsyaml.load(parts[1]);
 
-          // Sesuaikan class kartu dengan struktur CSS kamu
+          const toolsText = data.software || data.description || '';
+          let imagePath = data.image || '';
+          if (imagePath.startsWith('/')) {
+            imagePath = imagePath.substring(1);
+          }
+
           const cardHtml = `
             <div class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900">
               <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
