@@ -174,5 +174,16 @@
         </footer>
       </main>
     </div>
+
+    <!-- Cukup panggil ini di bagian bawah HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="portfolio-loader.js"></script>
+    <script>
+      // Tinggal sebut nama kategori & ID container-nya
+      document.addEventListener('DOMContentLoaded', () => {
+        loadPortfolio('vector', 'vector-container'); // Ganti 'vector' sesuai kategorinya
+      });
+    </script>
+
   </body>
 </html>
