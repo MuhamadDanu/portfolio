@@ -1,19 +1,19 @@
 backend:
-  name: github
-  repo: MuhamadDanu/portfolio # Ganti sesuai USERNAME/NAMA_REPO GitHub kamu
-  branch: main # Branch utama kamu
+  name: git-gateway
+  site_domain: muhamaddanu.netlify.app
+  branch: main
 
-media_folder: "assets_poster" # Folder tempat nyimpen foto karya
+media_folder: "assets_poster"
 public_folder: "assets_poster"
 
 collections:
   - name: "portfolio"
     label: "Karya Portfolio"
-    folder: "content/portfolio" # Tempat menyimpan data detail karya (format JSON/Markdown)
+    folder: "content/portfolio"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Kategori", name: "category", widget: "select", options: ["Banner", "Illustration", "Logo", "Apparel"] }
+      - { label: "Kategori", name: "category", widget: "select", options: ["Banner", "UI/UX", "Graphic Design", "Illustration"] }
       - { label: "Deskripsi/Software", name: "description", widget: "string" }
       - { label: "Foto Karya", name: "image", widget: "image" }

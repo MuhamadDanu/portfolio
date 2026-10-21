@@ -12,11 +12,9 @@
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
       if (window.netlifyIdentity) {
-        // Tembakkan langsung autentikasi ke domain Netlify kamu
         window.netlifyIdentity.init({
-          APIUrl: "https://coruscating-otter-0627eb.netlify.app/.netlify/identity"
+          APIUrl: "https://muhamaddanu.netlify.app/.netlify/identity"
         });
-
         window.netlifyIdentity.on("init", user => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
