@@ -1,9 +1,9 @@
+local_backend: true
+
 backend:
-  name: github
-  repo: MuhamadDanu/portfolio
+  name: git-gateway
   branch: main
 
-local_backend: true
 
 media_folder: "assets"
 public_folder: "assets"
