@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen" x-data="{ activeModal: null }">
+<body class="bg-gray-900 text-gray-100 min-h-screen" x-data="sertifikatApp()" x-init="init()">
 
   <!-- Header / Navbar -->
   <header class="py-6 border-b border-gray-800">
@@ -28,67 +28,141 @@
       <p class="text-gray-400">Daftar sertifikat keahlian dan pencapaian yang telah saya raih.</p>
     </div>
 
-    <!-- Grid Kartu Sertifikat -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Status Loading -->
+    <div x-show="loading" class="text-center py-12">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mb-2"></div>
+      <p class="text-gray-400 text-sm">Memuat data sertifikat...</p>
+    </div>
+
+    <!-- Status Jika Kosong -->
+    <div x-show="!loading && sertifikats.length === 0" class="text-center py-12 text-gray-400">
+      Belum ada sertifikat yang ditemukan.
+    </div>
+
+    <!-- Grid Kartu Sertifikat (Looping Otomatis) -->
+    <div x-show="!loading && sertifikats.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       
-      <!-- Contoh Item Sertifikat (Bisa digenerate/looping dari data markdown) -->
-      <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg hover:border-blue-500 transition duration-300">
-        <!-- Thumbnail Sertifikat -->
-        <div class="aspect-[35/24] bg-gray-950 overflow-hidden cursor-pointer" @click="activeModal = 'cert-1'">
-          <img 
-            src="images/uploads/sertifikat-1.jpg" 
-            alt="Sertifikat Graphic Design" 
-            class="w-full h-full object-cover hover:scale-105 transition duration-500" 
-            loading="lazy"
-          >
-        </div>
-        
-        <!-- Informasi Sertifikat -->
-        <div class="p-5">
-          <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-900/50 text-blue-400 border border-blue-800">
-            Penerbit: BNSP / Dicoding
-          </span>
-          <h3 class="text-lg font-bold mt-3 text-white">Graphic Designer Professional</h3>
-          <p class="text-sm text-gray-400 mt-1">Diterbitkan: Oktober 2026</p>
+      <template x-for="(item, index) in sertifikats" :key="index">
+        <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg hover:border-blue-500 transition duration-300 flex flex-col justify-between">
           
-          <button 
-            @click="activeModal = 'cert-1'" 
-            class="mt-4 w-full py-2 bg-gray-700 hover:bg-blue-600 text-sm font-medium rounded-lg text-white transition"
-          >
-            Lihat Ukuran Penuh (HD)
-          </button>
-        </div>
-
-        <!-- Lightbox Modal untuk Resolusi Tinggi (3500x2400) -->
-        <div 
-          x-show="activeModal === 'cert-1'" 
-          x-transition 
-          class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-          style="display: none;"
-        >
-          <div class="relative max-w-6xl w-full max-h-[90vh] flex flex-col items-center">
-            <!-- Tombol Close -->
-            <button 
-              @click="activeModal = null" 
-              class="absolute -top-10 right-0 text-white hover:text-red-400 font-bold text-xl"
-            >
-              ✕ Tutup
-            </button>
-
-            <!-- Gambar Resolusi Penuh -->
-            <img 
-              src="images/uploads/sertifikat-1.jpg" 
-              alt="Sertifikat HD" 
-              class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
-            >
+          <div>
+            <!-- Thumbnail Sertifikat -->
+            <div class="aspect-[35/24] bg-gray-950 overflow-hidden cursor-pointer" @click="activeModal = item">
+              <img 
+                :src="getImageUrl(item.image)" 
+                :alt="item.title"
+                class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                loading="lazy"
+              >
+            </div>
+            
+            <!-- Informasi Sertifikat -->
+            <div class="p-5">
+              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded bg-blue-900/50 text-blue-400 border border-blue-800" x-text="'Penerbit: ' + (item.issuer || 'N/A')"></span>
+              <h3 class="text-lg font-bold mt-3 text-white" x-text="item.title"></h3>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Duplikat elemen kartu di atas untuk sertifikat lainnya -->
+          <div class="p-5 pt-0">
+            <button 
+              @click="activeModal = item" 
+              class="w-full py-2 bg-gray-700 hover:bg-blue-600 text-sm font-medium rounded-lg text-white transition"
+            >
+              Lihat Ukuran Penuh (HD)
+            </button>
+          </div>
+
+        </div>
+      </template>
 
     </div>
+
+    <!-- Lightbox Modal untuk Resolusi Tinggi -->
+    <div 
+      x-show="activeModal !== null" 
+      x-transition 
+      class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+      style="display: none;"
+    >
+      <div class="relative max-w-6xl w-full max-h-[90vh] flex flex-col items-center">
+        <!-- Tombol Close -->
+        <button 
+          @click="activeModal = null" 
+          class="absolute -top-10 right-0 text-white hover:text-red-400 font-bold text-xl cursor-pointer"
+        >
+          ✕ Tutup
+        </button>
+
+        <!-- Gambar Resolusi Penuh -->
+        <img 
+          :src="activeModal ? getImageUrl(activeModal.image) : ''" 
+          :alt="activeModal ? activeModal.title : 'Sertifikat HD'" 
+          class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+        >
+      </div>
+    </div>
+
   </main>
+
+  <!-- Script Fetch Dynamic CMS Data -->
+  <script>
+    function sertifikatApp() {
+      return {
+        sertifikats: [],
+        activeModal: null,
+        loading: true,
+
+        // Helper untuk merapikan path gambar dari CMS
+        // Helper untuk merapikan path gambar dari CMS
+        getImageUrl(path) {
+          if (!path) return '/assets/default.jpg';
+          
+          // Jika URL penuh (http/https)
+          if (path.startsWith('http://') || path.startsWith('https://')) return path;
+          
+          // Bersihkan slash ganda di awal jika ada
+          let cleanPath = path.replace(/^\/+/, '');
+          
+          // Pastikan selalu diawali dengan satu slash '/' agar terbaca dari root domain Vercel
+          return '/' + cleanPath;
+        },
+
+        async init() {
+          try {
+            // Ambil daftar file dari repo GitHub kamu
+            const response = await fetch('https://api.github.com/repos/MuhamadDanu/portfolio/contents/content/sertifikat');
+            const files = await response.json();
+            
+            if (Array.isArray(files)) {
+              const list = [];
+              for (const file of files) {
+                if (file.name.endsWith('.md')) {
+                  const res = await fetch(file.download_url);
+                  const text = await res.text();
+                  
+                  // Parse frontmatter sederhana (.md)
+                  const titleMatch = text.match(/title:\s*"?([^"\r\n]+)"?/);
+                  const issuerMatch = text.match(/issuer:\s*"?([^"\r\n]+)"?/);
+                  const imageMatch = text.match(/image:\s*"?([^"\r\n]+)"?/);
+
+                  list.push({
+                    title: titleMatch ? titleMatch[1] : 'Sertifikat',
+                    issuer: issuerMatch ? issuerMatch[1] : '-',
+                    image: imageMatch ? imageMatch[1] : ''
+                  });
+                }
+              }
+              this.sertifikats = list;
+            }
+          } catch (err) {
+            console.error("Gagal memuat sertifikat dari CMS:", err);
+          } finally {
+            this.loading = false;
+          }
+        }
+      }
+    }
+  </script>
 
 </body>
 </html>

@@ -6,7 +6,7 @@ backend:
   auth_endpoint: api/auth
 
 media_folder: "assets"
-public_folder: "assets"
+public_folder: "/assets"
 
 collections:
   - name: "banner"
