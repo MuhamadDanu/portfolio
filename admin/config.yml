@@ -1,6 +1,6 @@
 backend:
   name: github
-  site_domain: muhamaddanu/portfolio
+  site_domain: MuhamadDanu/portfolio
   branch: main
 
 media_folder: "assets"
