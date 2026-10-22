@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager - Portfolio Admin</title>
     <link href="./config.yml" type="text/yaml" rel="cms-config-url" />
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
       // Inisialisasi Netlify Identity
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.reload();
-            });
-          }
-        });
-      }
+      // if (window.netlifyIdentity) {
+      //   window.netlifyIdentity.on("init", user => {
+      //     if (!user) {
+      //       window.netlifyIdentity.on("login", () => {
+      //         document.location.reload();
+      //       });
+      //     }
+      //   });
+      // }
 
       // Custom Preview biar rapi tanpa teks "Deskripsi / Tools:"
       var PortfolioPreview = createClass({
