@@ -2,7 +2,7 @@ backend:
   name: github
   repo: MuhamadDanu/portfolio
   branch: main
-  base_url: https://portfolio-jqp0rwgxc-titik-koma1.vercel.app
+  base_url: https://portfolio-pi-green-6hqrj6pqpy.vercel.app
   auth_endpoint: api/auth
 
 media_folder: "assets"
