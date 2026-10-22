@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   site_domain: muhamaddanu.netlify.app
   branch: main
 
