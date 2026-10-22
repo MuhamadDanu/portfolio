@@ -69,12 +69,11 @@ collections:
 
   - name: "sertifikat"
     label: "Sertifikat"
-    folder: "content/sertifikat" # Folder penyimpanan file markdown data sertifikat
+    folder: "content/sertifikat"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Judul Sertifikat", name: "title", widget: "string" }
-      - { label: "Penerbit / Organisasi", name: "issuer", widget: "string" }
-      - { label: "Tanggal Diterbitkan", name: "date", widget: "datetime" }
-      - { label: "Gambar Sertifikat (3500x2400px)", name: "image", widget: "image" }
-      - { label: "Deskripsi Singkat", name: "description", widget: "text", required: false }
+      - { label: "Penerbit", name: "issuer", widget: "string" }
+      - { label: "Gambar Sertifikat", name: "image", widget: "image" }
+      - { label: "Deskripsi", name: "description", widget: "text", required: false }
