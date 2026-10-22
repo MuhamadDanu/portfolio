@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sertifikat - Portofolio Saya</title>
+  <!-- Tailwind CSS & Alpine.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen" x-data="{ activeModal: null }">
+
+  <!-- Header / Navbar -->
+  <header class="py-6 border-b border-gray-800">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Koleksi Sertifikat</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="text-gray-400 hover:text-white">Portofolio</a>
+        <a href="sertifikat.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">Sertifikat</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main class="container mx-auto px-4 py-10">
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold mb-2">Lisensi & Sertifikasi</h2>
+      <p class="text-gray-400">Daftar sertifikat keahlian dan pencapaian yang telah saya raih.</p>
+    </div>
+
+    <!-- Grid Kartu Sertifikat -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Contoh Item Sertifikat (Bisa digenerate/looping dari data markdown) -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg hover:border-blue-500 transition duration-300">
+        <!-- Thumbnail Sertifikat -->
+        <div class="aspect-[35/24] bg-gray-950 overflow-hidden cursor-pointer" @click="activeModal = 'cert-1'">
+          <img 
+            src="images/uploads/sertifikat-1.jpg" 
+            alt="Sertifikat Graphic Design" 
+            class="w-full h-full object-cover hover:scale-105 transition duration-500 loading="lazy""
+          >
+        </div>
+        
+        <!-- Informasi Sertifikat -->
+        <div class="p-5">
+          <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-900/50 text-blue-400 border border-blue-800">
+            Penerbit: BNSP / Dicoding
+          </span>
+          <h3 class="text-lg font-bold mt-3 text-white">Graphic Designer Professional</h3>
+          <p class="text-sm text-gray-400 mt-1">Diterbitkan: Oktober 2026</p>
+          
+          <button 
+            @click="activeModal = 'cert-1'" 
+            class="mt-4 w-full py-2 bg-gray-700 hover:bg-blue-600 text-sm font-medium rounded-lg text-white transition"
+          >
+            Lihat Ukuran Penuh (HD)
+          </button>
+        </div>
+
+        <!-- Lightbox Modal untuk Resolusi Tinggi (3500x2400) -->
+        <div 
+          x-show="activeModal === 'cert-1'" 
+          x-transition 
+          class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          style="display: none;"
+        >
+          <div class="relative max-w-6xl w-full max-h-[90vh] flex flex-col items-center">
+            <!-- Tombol Close -->
+            <button 
+              @click="activeModal = null" 
+              class="absolute -top-10 right-0 text-white hover:text-red-400 font-bold text-xl"
+            >
+              ✕ Tutup
+            </button>
+
+            <!-- Gambar Resolusi Penuh -->
+            <img 
+              src="images/uploads/sertifikat-1.jpg" 
+              alt="Sertifikat HD" 
+              class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplikat elemen kartu di atas untuk sertifikat lainnya -->
+
+    </div>
+  </main>
+
+</body>
+</html>
