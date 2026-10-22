@@ -78,4 +78,3 @@ collections:
       - { label: "Judul Sertifikat", name: "title", widget: "string" }
       - { label: "Penerbit", name: "issuer", widget: "string" }
       - { label: "Gambar Sertifikat", name: "image", widget: "image" }
-      - { label: "Deskripsi", name: "description", widget: "text", required: false }
