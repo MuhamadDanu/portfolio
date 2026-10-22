@@ -1,7 +1,9 @@
 backend:
   name: github
-  site_domain: MuhamadDanu/portfolio
+  repo: MuhamadDanu/portfolio
   branch: main
+
+local_backend: true
 
 media_folder: "assets"
 public_folder: "assets"
