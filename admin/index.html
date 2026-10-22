@@ -26,13 +26,13 @@
         render: function() {
           var entry = this.props.entry;
           var title = entry.getIn(['data', 'title']);
-          var software = entry.getIn(['data', 'software']);
+          var subtitle = entry.getIn(['data', 'issuer']) || entry.getIn(['data', 'description']) || entry.getIn(['data', 'software']) || '';
           var image = this.props.getAsset(entry.getIn(['data', 'image']));
 
           return h('div', { style: { padding: '20px', fontFamily: 'sans-serif' } },
             image ? h('img', { src: image.toString(), style: { maxWidth: '100%', borderRadius: '8px', marginBottom: '12px' } }) : null,
             h('h3', { style: { margin: '0 0 6px 0', fontSize: '18px', fontWeight: 'bold' } }, title),
-            h('p', { style: { margin: 0, color: '#666', fontSize: '14px' } }, software)
+            h('p', { style: { margin: 0, color: '#666', fontSize: '14px' } }, subtitle)
           );
         }
       });
@@ -44,6 +44,7 @@
       CMS.registerPreviewTemplate("illustration", PortfolioPreview);
       CMS.registerPreviewTemplate("brand", PortfolioPreview);
       CMS.registerPreviewTemplate("editing", PortfolioPreview);
+      CMS.registerPreviewTemplate("poster", PortfolioPreview);
       CMS.registerPreviewTemplate("sertifikat", PortfolioPreview);
     </script>
   </body>
