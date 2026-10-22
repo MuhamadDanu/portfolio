@@ -2,6 +2,8 @@ backend:
   name: github
   repo: MuhamadDanu/portfolio
   branch: main
+  base_url: https://portfolio-jqp0rwgxc-titik-koma1.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "assets"
 public_folder: "assets"

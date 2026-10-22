@@ -10,7 +10,7 @@
     <!-- Decap CMS Script -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // Custom Preview Template
+      // Custom Preview Template untuk merapikan tampilan preview
       var PortfolioPreview = createClass({
         render: function() {
           var entry = this.props.entry;
@@ -26,7 +26,7 @@
         }
       });
 
-      // Daftarkan preview ke semua koleksi
+      // Daftarkan preview ke semua koleksi termasuk Sertifikat
       CMS.registerPreviewTemplate("banner", PortfolioPreview);
       CMS.registerPreviewTemplate("logo", PortfolioPreview);
       CMS.registerPreviewTemplate("vector", PortfolioPreview);
