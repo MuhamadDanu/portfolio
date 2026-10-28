@@ -68,6 +68,16 @@ collections:
       - { label: "Judul Karya", name: "title", widget: "string" }
       - { label: "Deskripsi / Tools", name: "description", widget: "string" }
       - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor" }
+  
+  - name: "Deskripsi"
+    label: "Deskripsi Design"
+    folder: "content/deskripsi"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Karya", name: "title", widget: "string" }
+      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
+      - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor" }
 
   - name: "sertifikat"
     label: "Sertifikat"

@@ -29,8 +29,15 @@ async function loadPortfolio(category, containerId) {
             imagePath = imagePath.substring(1);
           }
 
+          // Escape string agar aman dari kutip jika ada di title/description
+          const safeTitle = (data.title || '').replace(/'/g, "\\'");
+          const safeDesc = toolsText.replace(/'/g, "\\'");
+
           const cardHtml = `
-            <div class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900">
+            <div 
+              @click="openModal('${imagePath}', '${safeTitle}', '${safeDesc}')"
+              class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-zinc-400 dark:hover:ring-zinc-600 transition"
+            >
               <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
                 <img
                   src="${imagePath}"
