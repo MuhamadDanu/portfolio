@@ -1,6 +1,6 @@
 ---
-title: ONSINA FURNITURE (SHOPEE MALL)
-description: Desain Deskripsi Lemari Dapur Motif
+title: Lemari Dapur Motif Baja
+description: ONSINA FURNITURE (SHOPEE MALL)
 image: /assets/logo-onsina.jpg
 images:
   - /assets/onsina-lemari-dapur-motif-file-1.jpg
