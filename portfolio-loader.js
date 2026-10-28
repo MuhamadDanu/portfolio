@@ -25,13 +25,15 @@ async function loadPortfolio(category, containerId) {
 
           const toolsText = data.software || data.description || '';
           
-          let coverImagePath = data.image || '';
-          if (coverImagePath.startsWith('/')) {
-            coverImagePath = coverImagePath.substring(1);
-          }
-
+          // Pastikan bundleImages dibersihkan path-nya dengan benar
           let bundleImages = data.images || [];
-          bundleImages = bundleImages.map(img => img.startsWith('/') ? img.substring(1) : img);
+          bundleImages = bundleImages.map(img => {
+            if (typeof img === 'string') {
+              return img.startsWith('/') ? img.substring(1) : img;
+            }
+            return '';
+          }).filter(Boolean);
+
           if (bundleImages.length === 0 && coverImagePath) {
             bundleImages = [coverImagePath];
           }
@@ -39,12 +41,12 @@ async function loadPortfolio(category, containerId) {
           const safeTitle = (data.title || '').replace(/'/g, "\\'");
           const safeDesc = toolsText.replace(/'/g, "\\'");
           
-          // Ubah array gambar ke JSON string untuk dikirim ke fungsi modal
-          const jsonImages = JSON.stringify(bundleImages);
+          // Konversi array gambar ke JSON string yang aman untuk atribut HTML
+          const jsonImages = JSON.stringify(bundleImages).replace(/"/g, '&quot;');
 
           const cardHtml = `
             <div 
-              onclick="const rootEl = document.querySelector('[x-data]'); if(rootEl && rootEl.__x) { rootEl.__x.$data.openModal(${jsonImages.replace(/"/g, '&quot;')}, '${safeTitle}', '${safeDesc}') } else { window.openModalGlobal && window.openModalGlobal(${jsonImages.replace(/"/g, '&quot;')}, '${safeTitle}', '${safeDesc}') }"
+              onclick="window.openModalGlobal && window.openModalGlobal(${jsonImages}, '${safeTitle}', '${safeDesc}')"
               class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-zinc-400 dark:hover:ring-zinc-600 transition"
             >
               <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
