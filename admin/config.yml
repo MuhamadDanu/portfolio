@@ -69,15 +69,19 @@ collections:
       - { label: "Deskripsi / Tools", name: "description", widget: "string" }
       - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor" }
   
-  - name: "Deskripsi"
+  - name: "deskripsi"
     label: "Deskripsi Design"
     folder: "content/deskripsi"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Judul Karya", name: "title", widget: "string" }
-      - { label: "Deskripsi / Tools", name: "description", widget: "string" }
-      - { label: "Foto Vektor", name: "image", widget: "image", media_folder: "/assets_vektor" }
+      - {label: "Judul Karya", name: "title", widget: "string"}
+      - {label: "Software / Tools", name: "description", widget: "string", required: false}
+      - {label: "Foto Cover (Tampilan di Luar/Grid)", name: "image", widget: "image"}
+      - label: "Bundle Foto (Isi 13 Gambar di Dalam Modal)"
+        name: "images"
+        widget: "list"
+        field: {label: "Gambar Detail", name: "img_url", widget: "image"}
 
   - name: "sertifikat"
     label: "Sertifikat"

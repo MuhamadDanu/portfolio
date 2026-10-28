@@ -24,35 +24,51 @@ async function loadPortfolio(category, containerId) {
           const data = jsyaml.load(parts[1]);
 
           const toolsText = data.software || data.description || '';
-          let imagePath = data.image || '';
-          if (imagePath.startsWith('/')) {
-            imagePath = imagePath.substring(1);
+          
+          // Path untuk gambar cover di luar
+          let coverImagePath = data.image || '';
+          if (coverImagePath.startsWith('/')) {
+            coverImagePath = coverImagePath.substring(1);
           }
 
-          // Escape string agar aman dari kutip jika ada di title/description
+          // Path untuk kumpulan gambar bundle di dalam modal
+          let bundleImages = data.images || [];
+          bundleImages = bundleImages.map(img => img.startsWith('/') ? img.substring(1) : img);
+          
+          // Jika bundle kosong tapi cover ada, fallback pakai cover
+          if (bundleImages.length === 0 && coverImagePath) {
+            bundleImages = [coverImagePath];
+          }
+
           const safeTitle = (data.title || '').replace(/'/g, "\\'");
           const safeDesc = toolsText.replace(/'/g, "\\'");
+          const jsonImages = JSON.stringify(bundleImages).replace(/'/g, "&apos;");
 
           const cardHtml = `
             <div 
-              @click="openModal('${imagePath}', '${safeTitle}', '${safeDesc}')"
+              @click="openModal(${jsonImages}, '${safeTitle}', '${safeDesc}')"
               class="group relative overflow-hidden rounded-xl bg-zinc-100 p-4 dark:bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-zinc-400 dark:hover:ring-zinc-600 transition"
             >
               <div class="overflow-hidden rounded-lg aspect-square bg-zinc-200 dark:bg-zinc-800">
                 <img
-                  src="${imagePath}"
+                  src="${coverImagePath}"
                   alt="${data.title || 'Karya'}"
                   loading="lazy"
                   class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />
               </div>
-              <div class="mt-4">
-                <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
-                  ${data.title || ''}
-                </h3>
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">
-                  ${toolsText}
-                </p>
+              <div class="mt-4 flex items-center justify-between">
+                <div>
+                  <h3 class="font-medium text-zinc-900 dark:text-zinc-100">
+                    ${data.title || ''}
+                  </h3>
+                  <p class="text-sm text-zinc-500 dark:text-zinc-400">
+                    ${toolsText}
+                  </p>
+                </div>
+                <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 px-2.5 py-1 rounded-full font-medium">
+                  ${bundleImages.length} Foto
+                </span>
               </div>
             </div>
           `;

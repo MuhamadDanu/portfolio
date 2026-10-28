@@ -40,7 +40,7 @@
     <div
       x-data="{
         darkMode: false,
-        activeImage: null,
+        activeImages: [],
         activeTitle: '',
         activeDesc: '',
         toggleDarkMode() {
@@ -51,14 +51,14 @@
             document.body.parentNode.classList.remove('dark');
           }
         },
-        openModal(img, title, desc) {
-          this.activeImage = img;
+        openModal(images, title, desc) {
+          this.activeImages = images;
           this.activeTitle = title;
           this.activeDesc = desc;
           document.body.classList.add('overflow-hidden');
         },
         closeModal() {
-          this.activeImage = null;
+          this.activeImages = [];
           document.body.classList.remove('overflow-hidden');
         }
       }"
@@ -71,22 +71,12 @@
         <!-- Header / Navigation -->
         <header class="flex items-center justify-between py-7">
           <div class="flex items-center gap-4">
-            <!-- Tombol Kembali ke Beranda -->
             <a
               href="index.html"
               class="inline-flex items-center gap-2 rounded-lg bg-zinc-100 px-4 py-2 text-sm font-medium hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-4"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z"
-                  clip-rule="evenodd"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
               </svg>
               Kembali
             </a>
@@ -102,44 +92,14 @@
             type="button"
             class="relative inline-flex size-9 items-center justify-center text-zinc-600 hover:opacity-75 dark:text-zinc-400"
           >
-            <div
-              x-cloak
-              x-show="!darkMode"
-              class="absolute inset-0 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                />
+            <div x-cloak x-show="!darkMode" class="absolute inset-0 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
               </svg>
             </div>
-            <div
-              x-cloak
-              x-show="darkMode"
-              class="absolute inset-0 flex items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
+            <div x-cloak x-show="darkMode" class="absolute inset-0 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
               </svg>
             </div>
           </button>
@@ -151,13 +111,13 @@
             Deskripsi Design
           </h1>
           <p class="mt-2 text-zinc-600 dark:text-zinc-400">
-            Kumpulan karya desain beserta detail tools dan deskripsinya. Klik gambar untuk melihat tampilan penuh.
+            Kumpulan karya desain bundle/pack. Klik kartu untuk melihat detail seluruh gambar.
           </p>
         </div>
 
         <!-- Grid Karya dari CMS -->
         <div id="deskripsi-container" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-          <!-- Item di-render otomatis dari portfolio-loader.js -->
+          <!-- Item di-render otomatis -->
         </div>
 
         <!-- Footer Sederhana -->
@@ -166,10 +126,10 @@
         </footer>
       </main>
 
-      <!-- LIGHTBOX MODAL (POPUP GAMBAR BESAR) -->
+      <!-- LIGHTBOX MODAL BUNDLE (MENAMPUNG BANYAK GAMBAR) -->
       <div
         x-cloak
-        x-show="activeImage"
+        x-show="activeImages.length > 0"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100"
@@ -179,35 +139,41 @@
         class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-y-auto"
         @keydown.escape.window="closeModal()"
       >
-        <!-- Background click to close -->
         <div class="fixed inset-0" @click="closeModal()"></div>
 
-        <!-- Container Gambar Popup -->
+        <!-- Container Modal Bundle -->
         <div class="relative z-10 my-auto max-w-[790px] w-full bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 my-8">
           
-          <!-- Tombol Close Modal -->
+          <!-- Tombol Close -->
           <button
             @click="closeModal()"
             type="button"
-            class="absolute top-4 right-4 z-20 flex size-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black transition"
+            class="absolute top-4 right-4 z-20 flex size-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black transition cursor-pointer"
           >
             ✕
           </button>
 
-          <!-- Gambar (Max Width 790px, Tinggi Mengikut hingga Max 1500px & Scrollable) -->
-          <div class="max-h-[85vh] overflow-y-auto w-full bg-zinc-950 flex flex-col items-center">
-            <img
-              :src="activeImage"
-              :alt="activeTitle"
-              class="w-full h-auto object-contain mx-auto"
-              style="max-width: 790px;"
-            />
-          </div>
-
-          <!-- Caption / Info Tambahan di Bawah Popup -->
-          <div class="p-5 bg-zinc-900 border-t border-zinc-800">
+          <!-- Header Info di Modal -->
+          <div class="p-5 bg-zinc-900 border-b border-zinc-800 sticky top-0 z-10">
             <h3 class="text-lg font-semibold text-white" x-text="activeTitle"></h3>
             <p class="text-sm text-zinc-400 mt-1" x-text="activeDesc"></p>
+          </div>
+
+          <!-- List Gambar Bundle (Lebar Max 790px, Tinggi Flexible/Scrollable ke Bawah) -->
+          <div class="max-h-[75vh] overflow-y-auto w-full bg-zinc-950 p-4 flex flex-col items-center gap-4">
+            <template x-for="(imgSrc, index) in activeImages" :key="index">
+              <img
+                :src="imgSrc"
+                :alt="activeTitle + ' - ' + (index + 1)"
+                class="w-full h-auto object-contain rounded-lg shadow-md"
+                style="max-width: 790px;"
+              />
+            </template>
+          </div>
+
+          <!-- Footer Modal Info Total Foto -->
+          <div class="p-3 bg-zinc-900 border-t border-zinc-800 text-center text-xs text-zinc-400">
+            Menampilkan <span x-text="activeImages.length"></span> gambar dalam bundle ini
           </div>
 
         </div>
@@ -223,6 +189,5 @@
         loadPortfolio('deskripsi', 'deskripsi-container');
       });
     </script>
-
   </body>
 </html>
