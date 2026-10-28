@@ -1,5 +1,5 @@
 ---
-title: Rak Sepatu Tertutup Baja
+title: Rak Sepatu Tertutup
 description: SHOPEE MALL
 image: /assets/logo-onsina.jpg
 images:
