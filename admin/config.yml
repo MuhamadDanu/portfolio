@@ -78,7 +78,7 @@ collections:
       - {label: "Judul Karya", name: "title", widget: "string"}
       - {label: "Software / Tools", name: "description", widget: "string", required: false}
       - {label: "Foto Cover (Tampilan di Luar/Grid)", name: "image", widget: "image"}
-      - label: "Bundle Foto (Isi 13 Gambar di Dalam Modal)"
+      - label: "Bundle Foto"
         name: "images"
         widget: "list"
         field: {label: "Gambar Detail", name: "img_url", widget: "image"}

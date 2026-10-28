@@ -38,31 +38,34 @@
   <body class="antialiased">
     <!-- Page Container & State Lightbox -->
     <div
-      x-data="{
-        darkMode: false,
-        activeImages: [],
-        activeTitle: '',
-        activeDesc: '',
-        toggleDarkMode() {
-          this.darkMode = ! this.darkMode;
-          if (this.darkMode) {
-            document.body.parentNode.classList.add('dark');
-          } else {
-            document.body.parentNode.classList.remove('dark');
-          }
-        },
-        openModal(images, title, desc) {
-          this.activeImages = images;
-          this.activeTitle = title;
-          this.activeDesc = desc;
-          document.body.classList.add('overflow-hidden');
-        },
-        closeModal() {
-          this.activeImages = [];
-          document.body.classList.remove('overflow-hidden');
-        }
-      }"
-      class="min-h-dvh min-w-80 bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+        x-data="{
+            darkMode: false,
+            activeImages: [],
+            activeTitle: '',
+            activeDesc: '',
+            init() {
+            window.openModalGlobal = (images, title, desc) => this.openModal(images, title, desc);
+            },
+            toggleDarkMode() {
+            this.darkMode = ! this.darkMode;
+            if (this.darkMode) {
+                document.body.parentNode.classList.add('dark');
+            } else {
+                document.body.parentNode.classList.remove('dark');
+            }
+            },
+            openModal(images, title, desc) {
+            this.activeImages = images;
+            this.activeTitle = title;
+            this.activeDesc = desc;
+            document.body.classList.add('overflow-hidden');
+            },
+            closeModal() {
+            this.activeImages = [];
+            document.body.classList.remove('overflow-hidden');
+            }
+        }"
+        class="min-h-dvh min-w-80 bg-white text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
     >
       <main
         id="page-content"
@@ -182,9 +185,13 @@
     </div>
 
     <!-- Script Fetch Data CMS -->
+    <!-- Script Fetch Data CMS -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="portfolio-loader.js"></script>
     <script>
+      // Global helper dan pemanggil loader (hanya 1 kali eksekusi)
+      window.openModalGlobal = null;
+
       document.addEventListener('DOMContentLoaded', () => {
         loadPortfolio('deskripsi', 'deskripsi-container');
       });
