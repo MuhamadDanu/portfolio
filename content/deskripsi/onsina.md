@@ -1,6 +1,6 @@
 ---
-title: ONSINA FURNITURE (SHOPEE MALL)
-description: Design Deskripsi Rak Sepatu Baja
+title: Rak Sepatu Tertutup Baja
+description: ONSINA FURNITURE (SHOPEE MALL)
 image: /assets/logo-onsina.jpg
 images:
   - /assets/upload-1.jpg
