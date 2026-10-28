@@ -1,5 +1,5 @@
 ---
-title: Lemari Dapur Motif Baja
+title: Lemari Dapur Motif
 description: SHOPEE MALL
 image: /assets/logo-onsina.jpg
 images:
