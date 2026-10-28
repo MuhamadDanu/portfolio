@@ -10,7 +10,6 @@ images:
   - /assets/artboard-7.jpg
   - /assets/artboard-6.jpg
   - /assets/artboard-5.jpg
-  - /assets/artboard-9.jpg
   - /assets/artboard-4.jpg
   - /assets/artboard-14.jpg
   - /assets/artboard-2.jpg
