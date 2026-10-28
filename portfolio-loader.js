@@ -25,7 +25,13 @@ async function loadPortfolio(category, containerId) {
 
           const toolsText = data.software || data.description || '';
           
-          // Pastikan bundleImages dibersihkan path-nya dengan benar
+          // 1. Definisikan coverImagePath terlebih dahulu secara aman
+          let coverImagePath = data.image || '';
+          if (coverImagePath.startsWith('/')) {
+            coverImagePath = coverImagePath.substring(1);
+          }
+
+          // 2. Definisikan bundleImages dan bersihkan path-nya
           let bundleImages = data.images || [];
           bundleImages = bundleImages.map(img => {
             if (typeof img === 'string') {
