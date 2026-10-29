@@ -1,7 +1,7 @@
 ---
 title: Lemari Alat Pembersih
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/lemari-pembersih.jpg
 images:
   - /assets/ak1.jpg
   - /assets/onsina-lemari-pembersih-file-2.jpg
