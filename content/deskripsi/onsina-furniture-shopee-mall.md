@@ -1,7 +1,7 @@
 ---
 title: Lemari Dapur Motif
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/lemari-dapur-motif.jpg
 images:
   - /assets/onsina-lemari-dapur-motif-file-1.jpg
   - /assets/onsina-lemari-dapur-motif-file-2.jpg
