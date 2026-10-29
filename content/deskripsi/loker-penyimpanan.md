@@ -1,7 +1,7 @@
 ---
 title: Loker Penyimpanan
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/loker-putih.jpg
 images:
   - /assets/ak1.jpg
   - /assets/onsina-loker-putih-file-2.jpg
