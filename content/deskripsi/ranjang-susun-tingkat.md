@@ -1,7 +1,7 @@
 ---
 title: Ranjang Susun Tingkat
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/ranjang.jpg
 images:
   - /assets/artboard-11.jpg
   - /assets/artboard-10.jpg
