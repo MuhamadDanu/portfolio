@@ -1,7 +1,7 @@
 ---
 title: Ranjang Alas Kasur
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/ranjang-alas-kasur.jpg
 images:
   - /assets/onsina-lemari-dapur-motif-file-1.jpg
   - /assets/ak2.jpg
