@@ -1,7 +1,7 @@
 ---
 title: Lemari Motif Swing
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/lemari-motif-swing.jpg
 images:
   - /assets/ak1.jpg
   - /assets/s2.jpg
