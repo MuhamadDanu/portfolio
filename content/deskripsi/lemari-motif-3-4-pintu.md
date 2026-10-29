@@ -1,7 +1,7 @@
 ---
 title: Lemari Motif 3 & 4 Pintu
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/lemari-motif-4-pintu.jpg
 images:
   - /assets/ak1.jpg
   - /assets/onsina-lemari-motif-lebar-file-2.jpg
