@@ -1,7 +1,7 @@
 ---
 title: Rak Sepatu Tertutup
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/rak-sepatu-tertutup.jpg
 images:
   - /assets/upload-1.jpg
   - /assets/upload-2.jpg
