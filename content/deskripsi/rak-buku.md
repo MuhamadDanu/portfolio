@@ -1,7 +1,7 @@
 ---
 title: Rak Buku
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/rak-buku.jpg
 images:
   - /assets/artboard-11.jpg
   - /assets/onsina-rak-lemari-buku-file-2.jpg
