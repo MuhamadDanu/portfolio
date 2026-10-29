@@ -1,7 +1,7 @@
 ---
 title: Rak Display
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/rak-display.jpg
 images:
   - /assets/ak1.jpg
   - /assets/rd2.jpg
