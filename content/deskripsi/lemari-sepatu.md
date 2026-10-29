@@ -1,7 +1,7 @@
 ---
 title: Lemari Sepatu
 description: SHOPEE MALL
-image: /assets/logo-onsina.jpg
+image: /assets/lemari-sepatu.jpg
 images:
   - /assets/upload-1.jpg
   - /assets/ls2.jpg
